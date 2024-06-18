@@ -49,18 +49,25 @@ function faq() {
 }
 faq();
 
-//scoll suave;
-const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]')
+function scrollSmooth() {
 
-function scrollToSection(event) {
-  event.preventDefault();
-  const href = event.currentTarget.getAttribute('href');
-  const section = document.querySelector(href);
-  section.scrollIntoView({
-    behavior: 'smooth',
-  });
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]')
+
+  function scrollToSection(event) {
+    event.preventDefault();
+    const href = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(href);
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+
+    });
+  }
+
+  linksInternos.forEach((link) => {
+    link.addEventListener('click', scrollToSection);
+  })
 }
+//scoll suave;
+scrollSmooth();
 
-linksInternos.forEach((link) => {
-  link.addEventListener('click', scrollToSection);
-})
